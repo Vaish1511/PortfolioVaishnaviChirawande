@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #8a2be2;
+            --text-dark: #333;
+            --card-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 30px;
+        }
+
+        .profile-name {
+            color: var(--primary-color);
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .nav-bar {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-bar a {
+            color: black;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-bar a:hover {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .home-icon {
+            font-size: 24px;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        /* About Me Section */
+        .about-section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 30px;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .about-content h1 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .about-content p {
+            color: var(--text-dark);
+            font-size: 16px;
+            max-width: 600px;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            margin: 40px 0;
+        }
+
+        .skills-section h2 {
+            color: var(--primary-color);
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .skill-name {
+            font-weight: 500;
+            font-size: 18px;
+        }
+
+        .experience {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Experience Section */
+        .experience-section {
+            margin: 40px 0;
+        }
+
+        .experience-section h2 {
+            color: var(--primary-color);
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .experience-card {
+            background: rgb(143, 197, 231);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateX(10px);
+        }
+
+        .experience-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        .experience-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            margin: 40px 0;
+        }
+
+        .projects-section h2 {
+            color: var(--primary-color);
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .project-card {
+            background: white;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateX(10px);
+        }
+
+        .project-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* Recommendations Section */
+        .recommendations-section {
+            margin: 40px 0;
+        }
+
+        .recommendations-section h2 {
+            color: var(--primary-color);
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .recommendations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .recommendation-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .recommendation-card p {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .recommendation-author {
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .recommendation-form {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .recommendation-form h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: opacity 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="profile-name">
+            <div>vaishnavi.chirawande22@vit.edu</div>
+            <div>+91 7620206129</div>
+            <div>www.linkedin.com/in/chirawandevaishnavi</div>
+        </div>
+        <nav class="nav-bar">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Project Details</a>
+            <a href="#experience">Experience</a>
+            <a href="#recommendations">Recommendations</a>
+        </nav>
+        <div class="home-icon">🏠</div>
+    </header>
+
+    <section class="about-section" id="about">
+        <img src="ResumePhoto.jpg" alt="Profile" class="profile-image">
+        <div class="about-content">
+            <h1>Hi, I'm Vaishnavi Chirawande! 👋</h1>
+            <p>I am a dedicated Computer Science and Engineering (CSE) student at "Vishwakarma Institute of Technology, Pune" specializing in Artificial Intelligence (AI) and Machine Learning (ML). 
+                My primary interests lie in Data Science and Machine Learning, where I am passionate about uncovering insights and developing innovative solutions.</p>
+        </div>
+    </section>
+
+    <section class="skills-section" id="skills">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <img src="java.png" alt="Java" class="skill-icon">
+                <div class="skill-name">Java</div>
+            </div>
+            <div class="skill-card">
+                <img src="dataSci.jpg" alt="Java" class="skill-icon">
+                <div class="skill-name">Data Science</div>
+            </div>
+            <div class="skill-card">
+                <img src="machineLearning.jpg" alt="Java" class="skill-icon">
+                <div class="skill-name">Machine Learning</div>
+            </div>
+            <div class="skill-card">
+                <img src="c++ image.png" alt="C++" class="skill-icon">
+                <div class="skill-name">C++</div>
+            </div>
+            <div class="skill-card">
+                <img src="html.png" alt="HTML" class="skill-icon">
+                <div class="skill-name">HTML & CSS</div>
+            </div>
+            <div class="skill-card">
+                <img src="java script.png" alt="JavaScript" class="skill-icon">
+                <div class="skill-name">JavaScript</div>
+            </div>
+            
+            
+        </div>
+    </section>
+
+    <section class="projects-section" id="projects">
+        <h2>Projects</h2>
+        <div class="project-card">
+            <h3>HealthCare ChatBot</h3>
+            <p>HealthQnA is an advanced healthcare chatbot designed to streamline patient symptom analysis using AI-driven dynamic interviews and root cause diagrams. It provides fast, personalized, and professional medical insights across various health conditions, ensuring accuracy and efficiency.</p>
+        </div>
+        <div class="project-card">
+            <h3>Airline Delay Prediction | XGBoost, Power BI</h3>
+            <p>Analyzed 8.85M flight records and weather data, improving delay prediction accuracy by 20%. XGBoost model achieved R² > 0.7 with low MAE and RMSE. Identified rain impact on 2.84M delays, with short-haul flights most affected. </p>
+        </div>
+        <div class="project-card">
+            <h3>Resumify | MySQL, Flask, JavaScript</h3>
+            <p>Developed a job platform for profile management by job seekers and employers. Built with HTML, CSS (Bootstrap), JavaScript for the front-end, and MySQL and Flask for the backend. </p>
+        </div>
+        <div class="project-card">
+            <h3>Bluetooth-Based Object Locator Tag</h3>
+            <p>Developed an object locator tag using HC-05 and NodeMCU, integrated with an Android app for tracking. Implemented Bluetooth communication for real-time object location tracking. Technologies: HC-05, NodeMCU, Android, C++. </p>
+        </div>
+        <div class="project-card">
+            <h3>Hybrid Recommendation System</h3>
+            <p>Designed a recommendation system combining content filtering and collaborative filtering techniques. Improved recommendation accuracy by leveraging both user preferences and item features. Technologies: Python, Machine Learning, Scikit-learn.</p>
+        </div>
+    </section>
+
+    <section class="experience-section" id="experience">
+        <h2>Experience </h2>
+        <div class="experience-card">
+            <h3>Summer Intern, IISER Pune</h3>
+            <h4>Duration : June 24 – July 24</h4>
+            <p>Studied Principles of Markov Chains and its Applications under guidance on DR. Moumanti Podder. Enhanced understanding of advanced mathematical concepts through hands-on research. Developed expertise in probabilistic modeling and its real-world applications, using Python.</p>
+        </div>
+        <div class="experience-card">
+            <h3>Project Intern, IISER Pune</h3>
+            <h4>Duration : December 23 – January 24</h4>
+            <p>Analyzed molecular graph data in a computational chemistry project under guidance of DR. Arnab Mukharjee. Gained foundational knowledge of Graph Neural Networks (GNN) and data science. Also used Omegafold, Alphafold. Applied machine learning techniques to chemical data, bridging computational chemistry and data science. </p>
+        </div>
+    </section>
+
+    <section class="recommendations-section" id="recommendations">
+        <h2>Recommendations</h2>
+        <div class="recommendations-grid">
+            <div class="recommendation-card">
+                <p>"Vaishnavi was a very hardworking Intern and she is a fast learner, has a very good foundation of python and MachineLearning. She is also a good listener"</p>
+                <div class="recommendation-author">- Prathith, Project Guide</div>
+            </div>
+        </div>
+
+        <form class="recommendation-form" id="recommendationForm">
+            <h3>Leave a Recommendation</h3>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </section>
+
+    <div id="popup" class="popup">
+        Thank you for submitting a recommendation!
+    </div>
+
+    <script>
+        // Function to show popup
+        function showPopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'block';
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 3000);
+        }
+
+        // Function to add new recommendation
+        function addRecommendation(name, message) {
+            const recommendationsGrid = document.querySelector('.recommendations-grid');
+            const newRecommendation = document.createElement('div');
+            newRecommendation.className = 'recommendation-card';
+            newRecommendation.innerHTML = `
+                <p>"${message}"</p>
+                <div class="recommendation-author">- ${name}</div>
+            `;
+            recommendationsGrid.appendChild(newRecommendation);
+        }
+
+        // Add event listener to form submission
+        document.getElementById('recommendationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+            addRecommendation(name, message);
+            showPopup();
+            this.reset();
+        });
+
+        // Home icon functionality
+        document.querySelector('.home-icon').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
